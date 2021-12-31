@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import {Fragment} from 'react'
-import {useState} from 'react'
-import {server} from '../lib/utils'
 import router from 'next/router'
+import { Fragment, useState } from 'react'
+import { server } from '../lib/utils'
 
 export default function Signin() {
     const [password, setPassword] = useState<string>('')
@@ -18,6 +17,8 @@ export default function Signin() {
             if (resp.status == 201) {
                 setPassword('')
                 setEmail('')
+            }else {
+                alert('Invalid email or password')
             }
 
             router.push("/app")

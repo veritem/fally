@@ -1,11 +1,10 @@
-import {Fragment} from 'react'
 import Head from 'next/head'
+import React, { Fragment } from 'react'
+import useSWR, { SWRConfig } from 'swr'
 import Nav from '../../components/Nav'
-import {server} from '../../lib/utils'
-import useSWR, {SWRConfig} from 'swr'
-import {User} from '../../lib/types'
 import fetch from '../../lib/fetch'
-import React from 'react'
+import { User } from '../../lib/types'
+import { server } from '../../lib/utils'
 
 function Users() {
     const {data} = useSWR<{data: User[]}>(`${server}/api/users`)
@@ -164,7 +163,7 @@ function Users() {
                         <tr key={row._id}>
                             <td className="border border-gray-200 p-4">{index + 1}</td>
                             <td className="border border-gray-200 p-4">{row.names}</td>
-                            <td className="border border-gray-200 p-4">
+                            <td className="border border-gray-200 p-4" onClick={() => handlePresence(row._id)}>
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -173,7 +172,7 @@ function Users() {
                                     onChange={() => handlePresence(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4">
+                            <td className="border border-gray-200 p-4"  onClick={() => handleaway(row._id) }>
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -182,7 +181,7 @@ function Users() {
                                     onChange={() => handleaway(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4">
+                            <td className="border border-gray-200 p-4" onClick={() => handleVisit(row._id)}>
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -190,7 +189,7 @@ function Users() {
                                     onChange={() => handleVisit(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4">
+                            <td className="border border-gray-200 p-4" onClick={() => handlewasvisted(row._id)}>
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -198,7 +197,7 @@ function Users() {
                                     onChange={() => handlewasvisted(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4">
+                            <td className="border border-gray-200 p-4" onClick={() => handleHelp(row._id)}>
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -206,7 +205,7 @@ function Users() {
                                     onChange={() => handleHelp(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4">
+                            <td className="border border-gray-200 p-4" onClick={() => handelWasHelped(row._id) }>
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -223,7 +222,7 @@ function Users() {
                                     disabled={isPresent(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4">
+                            <td className="border border-gray-200 p-4" onClick={() => handleStudied(row._id)}>
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -231,7 +230,7 @@ function Users() {
                                     onChange={() => handleStudied(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4">
+                            <td className="border border-gray-200 p-4" onClick={() => handleStarted(row._id)}>
                                 <input
                                     type="checkbox"
                                     className="rounded"

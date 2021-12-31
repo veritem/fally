@@ -8,3 +8,13 @@ export default function Home() {
         </Head>
     )
 }
+
+export async function getServerSideProps() {
+
+    return {
+        redirect: {
+           destination:'/app',
+           permanent: false,
+        },
+    }
+}
