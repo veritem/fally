@@ -1,7 +1,5 @@
 export const server =
-    process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000'
-        : 'https://rcasda.veritem.me/'
+    process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://rcasda.veritem.me/'
 
 export const getCurrentWeekInTheYear = () => {
     let d = new Date()

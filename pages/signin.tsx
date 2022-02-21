@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import router from 'next/router'
 import { Fragment, useState } from 'react'
+import toast from 'react-hot-toast'
 import { server } from '../lib/utils'
 
 export default function Signin() {
@@ -11,20 +12,22 @@ export default function Signin() {
         try {
             let resp = await fetch(`${server}/api/signin`, {
                 method: 'POST',
-                body: JSON.stringify({password, email})
+                body: JSON.stringify({ password, email })
             })
 
             if (resp.status == 201) {
                 setPassword('')
                 setEmail('')
-            }else {
-                alert('Invalid email or password')
+                toast.success('Successfully signed in!')
+            } else {
+                toast.error('Invalid email or password')
+                return
             }
 
-            router.push("/app")
-
+            router.push('/app')
         } catch (message) {
-            alert(message)
+            toast.error(message)
+            return
         }
     }
 

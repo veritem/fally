@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server'
 
-export async function middleware(req: NextRequest, ev: NextFetchEvent) {
+export async function middleware(req: NextRequest, _ev: NextFetchEvent) {
     const token = req.cookies['token']
 
     if (!token) return NextResponse.redirect('/signin')

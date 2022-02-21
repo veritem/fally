@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React, { Fragment } from 'react'
+import toast from 'react-hot-toast'
 import useSWR, { SWRConfig } from 'swr'
 import Nav from '../../components/Nav'
 import fetch from '../../lib/fetch'
@@ -7,7 +8,7 @@ import { User } from '../../lib/types'
 import { server } from '../../lib/utils'
 
 function Users() {
-    const {data} = useSWR<{data: User[]}>(`${server}/api/users`)
+    const { data } = useSWR<{ data: User[] }>(`${server}/api/users`)
 
     const [presents, setPresents] = React.useState<string[]>([])
     const [visitors, setVisitors] = React.useState<string>('0')
@@ -123,7 +124,7 @@ function Users() {
                 body: JSON.stringify(request)
             })
 
-            alert(resp.message)
+            toast.success(resp.message)
 
             setPresents([])
             setVisitors('')
@@ -136,26 +137,39 @@ function Users() {
             setstudied([])
             setStartedSabbath([])
         } catch (err) {
-            console.error(err)
+            toast.error('Something went wrong!')
+            return
         }
     }
 
     return (
         <section>
             <table className="table-auto relative h-20 overflow-auto  border-collapse border border-gray-300 font-primary mb-10">
-                <thead >
+                <thead>
                     <tr className="border-gray-200 border">
                         <th className="border sticky top-0 border-gray-200 p-4 bg-white">No</th>
                         <th className="border sticky top-0 border-gray-200 p-4 bg-white">Name</th>
                         <th className="border sticky top-0 border-gray-200 p-4 bg-white">Yaje</th>
-                        <th className="border  sticky top-0 border-gray-200 p-4 bg-white">Afite impamvu</th>
+                        <th className="border  sticky top-0 border-gray-200 p-4 bg-white">
+                            Afite impamvu
+                        </th>
                         <th className="border sticky top-0 border-gray-200 p-4 bg-white">Yasuye</th>
-                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">Yarasuwe</th>
-                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">Yarafashije</th>
-                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">Yarafashijwe</th>
-                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">Ararwaye</th>
+                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">
+                            Yarasuwe
+                        </th>
+                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">
+                            Yarafashije
+                        </th>
+                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">
+                            Yarafashijwe
+                        </th>
+                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">
+                            Ararwaye
+                        </th>
                         <th className="border sticky top-0 border-gray-200 p-4 bg-white">Yize 7</th>
-                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">Yatangiye isabato</th>
+                        <th className="border sticky top-0 border-gray-200 p-4 bg-white">
+                            Yatangiye isabato
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -163,7 +177,10 @@ function Users() {
                         <tr key={row._id}>
                             <td className="border border-gray-200 p-4">{index + 1}</td>
                             <td className="border border-gray-200 p-4">{row.names}</td>
-                            <td className="border border-gray-200 p-4" onClick={() => handlePresence(row._id)}>
+                            <td
+                                className="border border-gray-200 p-4"
+                                onClick={() => handlePresence(row._id)}
+                            >
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -172,7 +189,10 @@ function Users() {
                                     onChange={() => handlePresence(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4"  onClick={() => handleaway(row._id) }>
+                            <td
+                                className="border border-gray-200 p-4"
+                                onClick={() => handleaway(row._id)}
+                            >
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -181,7 +201,10 @@ function Users() {
                                     onChange={() => handleaway(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4" onClick={() => handleVisit(row._id)}>
+                            <td
+                                className="border border-gray-200 p-4"
+                                onClick={() => handleVisit(row._id)}
+                            >
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -189,7 +212,10 @@ function Users() {
                                     onChange={() => handleVisit(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4" onClick={() => handlewasvisted(row._id)}>
+                            <td
+                                className="border border-gray-200 p-4"
+                                onClick={() => handlewasvisted(row._id)}
+                            >
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -197,7 +223,10 @@ function Users() {
                                     onChange={() => handlewasvisted(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4" onClick={() => handleHelp(row._id)}>
+                            <td
+                                className="border border-gray-200 p-4"
+                                onClick={() => handleHelp(row._id)}
+                            >
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -205,7 +234,10 @@ function Users() {
                                     onChange={() => handleHelp(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4" onClick={() => handelWasHelped(row._id) }>
+                            <td
+                                className="border border-gray-200 p-4"
+                                onClick={() => handelWasHelped(row._id)}
+                            >
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -222,7 +254,10 @@ function Users() {
                                     disabled={isPresent(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4" onClick={() => handleStudied(row._id)}>
+                            <td
+                                className="border border-gray-200 p-4"
+                                onClick={() => handleStudied(row._id)}
+                            >
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -230,7 +265,10 @@ function Users() {
                                     onChange={() => handleStudied(row._id)}
                                 />
                             </td>
-                            <td className="border border-gray-200 p-4" onClick={() => handleStarted(row._id)}>
+                            <td
+                                className="border border-gray-200 p-4"
+                                onClick={() => handleStarted(row._id)}
+                            >
                                 <input
                                     type="checkbox"
                                     className="rounded"
@@ -260,7 +298,7 @@ function Users() {
     )
 }
 
-export default function attendance({fallback}) {
+export default function attendance({ fallback }) {
     return (
         <Fragment>
             <Head>
