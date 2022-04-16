@@ -19,7 +19,7 @@ export default function Support() {
                     <a href="mailto:mugaboverite@gmail.com" className="text-blue-500">
                         mugaboverite@gmail.com
                     </a>{' '}
-                    other wise check
+                    otherwise check
                     <Link href="/">
                         <a className="text-blue-500 text-sm"> home</a>
                     </Link>
