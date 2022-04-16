@@ -23,8 +23,7 @@ export default function Signin() {
                 toast.error('Invalid email or password')
                 return
             }
-
-            router.push('/app')
+            router.push('/')
         } catch (message) {
             toast.error(message)
             return

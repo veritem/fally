@@ -2,10 +2,10 @@ import Head from 'next/head'
 import React, { Fragment } from 'react'
 import toast from 'react-hot-toast'
 import useSWR, { SWRConfig } from 'swr'
-import Nav from '../../components/Nav'
-import fetch from '../../lib/fetch'
-import { User } from '../../lib/types'
-import { server } from '../../lib/utils'
+import Nav from '../components/Nav'
+import fetch from '../lib/fetch'
+import { User } from '../lib/types'
+import { server } from '../lib/utils'
 
 function Users() {
     const { data } = useSWR<{ data: User[] }>(`${server}/api/users`)

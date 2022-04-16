@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { Fragment } from 'react'
 import Nav from '../../components/Nav'
 import { getDatabase } from '../../lib/db'
@@ -105,6 +106,10 @@ export default function users({ report }) {
                     <p className="font-bold font-primary">No report</p>
                 </section>
             )}
+
+            <section className="grid place-items-center mt-20">
+                <Link href="/report/history"> View previous reports</Link>
+            </section>
         </Fragment>
     )
 }

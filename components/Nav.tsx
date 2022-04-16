@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { server } from '../lib/utils'
 import router from 'next/router'
+import { server } from '../lib/utils'
 
 export default function Nav() {
     const logout = async () => {
@@ -10,14 +10,14 @@ export default function Nav() {
 
     return (
         <nav className="bg-black shadow-md py-4 items-center px-12 text-white flex justify-end space-x-4">
-            <Link href="/app">
+            <Link href="/">
                 <a>home</a>
             </Link>
 
-            <Link href="/app/attendance">
+            <Link href="/attendance">
                 <a>attendancies</a>
             </Link>
-            <Link href="/app/report">
+            <Link href="/report">
                 <a>report</a>
             </Link>
 
