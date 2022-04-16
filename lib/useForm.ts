@@ -6,7 +6,7 @@ export default function useForm<T = {}>(initial: T = {} as any) {
 
     useEffect(() => {
         setInputs(initial)
-    }, [initialValues])
+    }, [initialValues, initial])
 
     function handleChange(e) {
         let { value, name, type } = e.target

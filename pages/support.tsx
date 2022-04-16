@@ -12,14 +12,14 @@ export default function Support() {
             <section className="py-20 px-36">
                 <h1 className="font-bold uppercase text-3xl py-4">Support</h1>
 
-                <p>Hey there, Hope you're doing great!</p>
-                <p>If you have any question regarding this software don't panic</p>
+                <p>Hey there, Hope you&apos;re doing great!</p>
+                <p>If you have any question regarding this software don&apos;t panic</p>
                 <p>
                     Email the creator at{' '}
                     <a href="mailto:mugaboverite@gmail.com" className="text-blue-500">
                         mugaboverite@gmail.com
                     </a>{' '}
-                    otherwise check
+                    otherwise check back
                     <Link href="/">
                         <a className="text-blue-500 text-sm"> home</a>
                     </Link>
