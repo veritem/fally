@@ -1,3 +1,5 @@
+import bcrypt from 'bcryptjs'
+
 export const server =
     process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://rcasda.veritem.me/'
 
@@ -15,4 +17,10 @@ export const getCurrentWeekInTheYear = () => {
     // Return array of year and week number
     return [d.getUTCFullYear(), weekNo]
     // return weekNo
+}
+
+export const hash = async (password: string) => {
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(password, salt)
+    return hash
 }

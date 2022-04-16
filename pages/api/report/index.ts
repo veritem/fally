@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getDatabase } from '../../lib/db'
-import { getCurrentWeekInTheYear } from '../../lib/utils'
+import { getDatabase } from '../../../lib/db'
+import { getCurrentWeekInTheYear } from '../../../lib/utils'
 
 export default async function Report(req: NextApiRequest, res: NextApiResponse) {
     let db = await getDatabase()
@@ -24,6 +24,10 @@ export default async function Report(req: NextApiRequest, res: NextApiResponse) 
                 created: Date.now()
             })
             return res.status(201).json({ sucess: true, message: 'Saved sucessfully' })
+        case 'GET':
+            let report = await db.collection('reports').find().sort({ created: -1 }).toArray()
+
+            return res.status(200).send(report)
         default:
             return res.status(200).json({ message: 'Nothing here' })
     }

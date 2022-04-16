@@ -21,6 +21,10 @@ export default function Nav() {
                 <a>report</a>
             </Link>
 
+            <Link href="/support">
+                <a>support</a>
+            </Link>
+
             <button className="bg-gray-800 px-4 py-2 rounded-sm shadow-md" onClick={logout}>
                 logout
             </button>
