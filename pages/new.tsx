@@ -71,13 +71,13 @@ export default function New() {
                 </div>
 
                 <div className="w-[20rem]">
-                    <label>Class</label>
+                    <label>Level</label>
                     <input
                         className="w-full mb-3 rounded-md"
                         type="text"
                         required
                         name="level"
-                        placeholder="Enter level"
+                        placeholder="CURL4, RCA1B"
                         value={inputs.level}
                         onChange={handleChange}
                     />
@@ -100,7 +100,7 @@ export default function New() {
                     <label>Password</label>
                     <input
                         className="w-full mb-3 rounded-md"
-                        type="text"
+                        type="password"
                         name="password"
                         required
                         placeholder="Enter names"

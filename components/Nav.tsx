@@ -4,8 +4,8 @@ import { server } from '../lib/utils'
 
 export default function Nav() {
     const logout = async () => {
-        let resp = await fetch(`${server}/api/signout`)
-        router.push('/')
+        await fetch(`${server}/api/signout`)
+        router.push('/signin')
     }
 
     return (
