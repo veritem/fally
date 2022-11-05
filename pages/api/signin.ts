@@ -5,42 +5,45 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 export default async function Signin(req: NextApiRequest, res: NextApiResponse) {
-    const db = await getDatabase()
+	const db = await getDatabase()
 
-    switch (req.method) {
-        case 'POST':
-            const { email, password } = JSON.parse(req.body)
+	switch (req.method) {
+		case 'POST':
+			const { email, password } = JSON.parse(req.body)
 
-            if (!email || !password) {
-                return res.status(401).json({ success: false, message: 'All fields are required' })
-            }
+			if (!email || !password) {
+				return res.status(401).json({ success: false, message: 'All fields are required' })
+			}
 
-            const user = await db.collection('users').findOne({ email })
+			const user = await db.collection('users').findOne({ email })
 
-            const passwordMatch = await bcrypt.compare(password, user.password)
+			if (!user)
+				return res.status(401).json({ success: false, message: 'Invalid credentials' })
 
-            if (!passwordMatch) {
-                return res
-                    .status(401)
-                    .json({ success: false, message: 'Invalid email or password' })
-            }
+			const passwordMatch = await bcrypt.compare(password, user?.password)
 
-            const token = jwt.sign({ user }, process.env.JWT_SCRET, {
-                expiresIn: process.env.JWT_EXPIRE
-            })
+			if (!passwordMatch) {
+				return res
+					.status(401)
+					.json({ success: false, message: 'Invalid email or password' })
+			}
 
-            res.setHeader(
-                'Set-Cookie',
-                cookie.serialize('token', token, {
-                    httpOnly: true,
-                    secure: process.env.NODE_ENV !== 'development',
-                    maxAge: 60 * 24 * 60,
-                    sameSite: 'strict',
-                    path: '/'
-                })
-            )
-            return res.status(201).json({ success: true })
-        default:
-            res.status(401).json({ success: false })
-    }
+			const token = jwt.sign({ user }, process.env.JWT_SCRET, {
+				expiresIn: process.env.JWT_EXPIRE
+			})
+
+			res.setHeader(
+				'Set-Cookie',
+				cookie.serialize('token', token, {
+					httpOnly: true,
+					secure: process.env.NODE_ENV !== 'development',
+					maxAge: 60 * 24 * 60,
+					sameSite: 'strict',
+					path: '/'
+				})
+			)
+			return res.status(201).json({ success: true })
+		default:
+			res.status(401).json({ success: false })
+	}
 }
