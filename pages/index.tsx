@@ -13,8 +13,8 @@ function Users() {
     return (
         <section className="pb-10">
             <div className="my-4 text-left">
-                <Link href="/new">
-                    <a className="bg-black text-white px-4 py-2 rounded-md my-4">add new user</a>
+                <Link href="/new" className="bg-black text-white px-4 py-2 rounded-md my-4">
+                    add new user
                 </Link>
             </div>
 
@@ -63,7 +63,7 @@ function Users() {
                 </tbody>
             </table>
         </section>
-    )
+    );
 }
 
 export default function App({ fallback }) {

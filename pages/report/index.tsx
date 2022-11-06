@@ -24,12 +24,12 @@ export default function users({ report }) {
             )}
 
             <section className="grid place-items-center mt-20">
-                <Link href="/report/history">
-                    <a className="text-blue-500">View previous reports</a>
+                <Link href="/report/history" className="text-blue-500">
+                    View previous reports
                 </Link>
             </section>
         </Fragment>
-    )
+    );
 }
 
 export async function getServerSideProps() {

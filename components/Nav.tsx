@@ -11,23 +11,23 @@ export default function Nav() {
     return (
         <nav className="bg-black shadow-md py-4 items-center px-12 text-white flex justify-end space-x-4">
             <Link href="/">
-                <a>home</a>
+                home
             </Link>
 
             <Link href="/attendance">
-                <a>attendancies</a>
+                attendancies
             </Link>
             <Link href="/report">
-                <a>report</a>
+                report
             </Link>
 
             <Link href="/support">
-                <a>support</a>
+                support
             </Link>
 
             <button className="bg-gray-800 px-4 py-2 rounded-sm shadow-md" onClick={logout}>
                 logout
             </button>
         </nav>
-    )
+    );
 }

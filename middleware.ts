@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const protectedRoutes = ['/', '/report', '/attendance', ' / report / history']
+const protectedRoutes = ['/', '/attendance', '/new', '/report/history']
 
 export async function middleware(req: NextRequest) {
 	if (protectedRoutes.find((p) => p === req.nextUrl.pathname)) {

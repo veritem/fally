@@ -54,11 +54,11 @@ function Report() {
                                     </td>
                                     <td className="border border-gray-200 p-4">
                                         <Link href={`/report/${report._id}`}>
-                                            <a>
-                                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                    View
-                                                </button>
-                                            </a>
+
+                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                View
+                                            </button>
+
                                         </Link>
                                     </td>
                                 </tr>
@@ -67,7 +67,7 @@ function Report() {
                 </div>
             </section>
         </Fragment>
-    )
+    );
 }
 
 export default function History({ fallback }) {
