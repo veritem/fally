@@ -32,6 +32,9 @@ export default async function Signin(req: NextApiRequest, res: NextApiResponse) 
 				expiresIn: process.env.JWT_EXPIRE
 			})
 
+
+
+
 			res.setHeader(
 				'Set-Cookie',
 				cookie.serialize('token', token, {
