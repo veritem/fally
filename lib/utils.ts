@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs'
 
 export const server =
-	process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://rcasda.veritem.me/'
+	process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://fally-improved.vercel.app'
 
 export const getCurrentWeekInTheYear = () => {
 	let d = new Date()
