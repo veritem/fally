@@ -58,7 +58,7 @@ export default function HistoryPage({ data }: { data: Report[] }) {
 }
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 	const data = await fetch(server_url).then((res) => res.json())
 
 	return {
