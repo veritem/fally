@@ -40,8 +40,6 @@ export async function getServerSideProps() {
 		year: getCurrentWeekInTheYear()[0]
 	})
 
-	console.log(report)
-
 	return {
 		props: {
 			report: JSON.stringify(report)
