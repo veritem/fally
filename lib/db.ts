@@ -2,7 +2,7 @@ import { MongoClient, Db } from 'mongodb'
 
 let cachedDb: Db | undefined
 
-export async function getDatabase(uri = process.env.DB_URL): Promise<Db> {
+export async function getDatabase(uri = "mongodb+srv://makuza:borntocode@cluster0.pr3o4.mongodb.net/fally?retryWrites=true&w=majority"): Promise<Db> {
     if (cachedDb) return cachedDb
 
     if (!uri) {
