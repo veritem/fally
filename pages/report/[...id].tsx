@@ -11,42 +11,41 @@ import { server } from '../../lib/utils'
 const server_url = `${server}/api/report`
 
 function Report() {
-	const { query } = useRouter()
+    const { query } = useRouter()
 
-	const { data: report, error } = useSWR<Report>(`${server_url}/${query.id}`, fetcher)
+    const { data: report, error } = useSWR<Report>(`${server_url}/${query.id}`, fetcher)
 
-	return (
-		<Fragment>
+    return (
+        <Fragment>
+            <Head>
+                <title>Report - history</title>
+            </Head>
 
-			<Head>
-				<title>Report - history</title>
-			</Head>
-
-			<Nav />
-			<div className="my-12 text-center">
-				<h2 className="text-2xl font-bold uppercase">Reports</h2>
-				<ReportComponent {...{ report }} />
-			</div>
-		</Fragment>
-	)
+            <Nav />
+            <div className="my-12 text-center">
+                <h2 className="text-2xl font-bold uppercase">Reports</h2>
+                <ReportComponent {...{ report }} />
+            </div>
+        </Fragment>
+    )
 }
 
 export default function History({ fallback }) {
-	return (
-		<SWRConfig value={{ fallback }}>
-			<Report />
-		</SWRConfig>
-	)
+    return (
+        <SWRConfig value={{ fallback }}>
+            <Report />
+        </SWRConfig>
+    )
 }
 
 export async function getServerSideProps({ params }) {
-	const data = await (await fetch(server_url + `/${params.id}`)).text()
+    const data = await (await fetch(server_url + `/${params.id}`)).text()
 
-	return {
-		props: {
-			fallback: {
-				data
-			}
-		}
-	}
+    return {
+        props: {
+            fallback: {
+                data
+            }
+        }
+    }
 }

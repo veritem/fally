@@ -5,13 +5,13 @@ import fetch from '../lib/fetch'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-	return (
-		<SWRConfig value={{ fetcher: fetch }}>
-			<NextNProgress />
-			<Component {...pageProps} />
-			<Toaster />
-		</SWRConfig>
-	)
+    return (
+        <SWRConfig value={{ fetcher: fetch }}>
+            <NextNProgress />
+            <Component {...pageProps} />
+            <Toaster />
+        </SWRConfig>
+    )
 }
 
 export default MyApp
